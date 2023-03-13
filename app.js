@@ -1,1 +1,1 @@
-alert("Hi!");
+const canvas = document.querySelector("canvas");
