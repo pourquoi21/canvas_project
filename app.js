@@ -17,3 +17,11 @@ ctx.beginPath();
 ctx.rect(350, 350, 100, 100);
 ctx.fillStyle = "black";
 ctx.fill();
+
+// 선긋기
+ctx.moveTo(450, 450);
+ctx.lineTo(550, 450);
+ctx.lineTo(550, 550);
+ctx.lineTo(450, 550);
+ctx.lineTo(450, 450);
+ctx.stroke();
