@@ -27,6 +27,5 @@ ctx.lineTo(450, 450);
 ctx.stroke();
 
 // shortcut
-ctx.moveTo(600, 600);
-ctx.fillStyle = "black";
-ctx.fillRect();
+ctx.fillStyle = "blue";
+ctx.fillRect(550, 550, 100, 100);
