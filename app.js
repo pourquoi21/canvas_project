@@ -29,3 +29,16 @@ ctx.stroke();
 // shortcut
 ctx.fillStyle = "blue";
 ctx.fillRect(550, 550, 100, 100);
+
+// make a house
+ctx.fillStyle = "black";
+ctx.fillRect(650, 650, 5, 100);
+ctx.fillRect(750, 650, 5, 100);
+ctx.lineWidth = 3;
+ctx.strokeRect(692, 700, 20, 50);
+ctx.fillRect(650, 650, 100, 5);
+
+ctx.moveTo(650, 650);
+ctx.lineTo(702, 600);
+ctx.lineTo(754, 650);
+ctx.stroke();
