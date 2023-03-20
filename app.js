@@ -63,3 +63,17 @@ ctx.arc(290, 172, 9, 0, 1 * Math.PI);
 ctx.strokeStyle = "white";
 ctx.lineWidth = 2;
 ctx.stroke();
+
+function onClick(event) {
+  const { offsetX, offsetY } = event;
+  console.log(offsetX, offsetY);
+  ctx.fillStyle = "black";
+  ctx.beginPath();
+  ctx.fillRect(offsetX, offsetY, 10, 10);
+}
+
+canvas.addEventListener("click", onClick);
+
+ctx.fillStyle = "red";
+ctx.beginPath();
+ctx.fillRect(500, 500, 10, 10);
