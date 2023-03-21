@@ -64,15 +64,26 @@ ctx.strokeStyle = "white";
 ctx.lineWidth = 2;
 ctx.stroke();
 
+const colors = [
+  "#ff3838",
+  "#ffb8b8",
+  "#c56cf0",
+  "#ff9f1a",
+  "#fff200",
+  "#32ff7e",
+  "#7efff5",
+];
+
 function onClick(event) {
   const { offsetX, offsetY } = event;
-  console.log(offsetX, offsetY);
-  ctx.fillStyle = "black";
+  // console.log(offsetX, offsetY);
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.fillRect(offsetX, offsetY, 10, 10);
+  ctx.fillRect(offsetX, offsetY, 3, 3);
 }
 
-canvas.addEventListener("click", onClick);
+canvas.addEventListener("mousemove", onClick);
 
 ctx.fillStyle = "red";
 ctx.beginPath();
