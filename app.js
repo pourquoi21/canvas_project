@@ -74,16 +74,16 @@ const colors = [
   "#7efff5",
 ];
 
-function onClick(event) {
+function onMove(event) {
   const { offsetX, offsetY } = event;
   // console.log(offsetX, offsetY);
   const color = colors[Math.floor(Math.random() * colors.length)];
   ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.fillRect(offsetX, offsetY, 3, 3);
+  ctx.fillRect(offsetX, offsetY, 2, 2);
 }
 
-canvas.addEventListener("mousemove", onClick);
+canvas.addEventListener("mousemove", onMove);
 
 ctx.fillStyle = "red";
 ctx.beginPath();
