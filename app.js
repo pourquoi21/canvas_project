@@ -74,16 +74,56 @@ const colors = [
   "#7efff5",
 ];
 
+let isPainting = false;
+ctx.fillStyle = "black";
+ctx.strokeStyle = "black";
+
 function onMove(event) {
   const { offsetX, offsetY } = event;
-  // console.log(offsetX, offsetY);
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  ctx.fillStyle = color;
+  // console.log(ctx.fillStyle);
+  // onMove함수에 ctx.beginPath()를 쓰면 선이 안 그어진다. 왜일까?
+  if (isPainting) {
+    ctx.lineTo(offsetX, offsetY);
+    ctx.stroke();
+    return;
+    // return을 해준 이유는 React에서 cleanup을 하는 이유와 비슷한 걸까?
+    // 확실히, return을 안 해주면..
+    // 이 함수가 뭔가 memory leak을 일으킬 것 같은(?)느낌이 들긴 한다.
+    // 이것도 chatGPT한테 물어봄: 얘가 자꾸 말을 바꾼다 ㅡㅡ
+    // 결론은 performance of the function을 위해서라는 거 같음.
+  }
+  // 왜 if문을 먼저 쓰고 moveTo를 썼을까...
+  // moveTo를 위에 올려봤는데 선이 안 그어진다.
+  // beginPath를 moveTo위에 써도 마찬가지.
+  // 상단에서 strokeStyle을 지정해주었기 때문에
+  // mouseDown에서 color를 제외해도
+  // 선은 그어지는데, moveTo와 if순서를 바꾸면 안됨.
+  // 왜???
+
+  // chatGPT한테 물어봤음: moveTo를 위로 올리면, 마우스다운이든 아니든,
+  // moveTo만 일단 열심히 수행하기 때문이라고함.
+  ctx.moveTo(offsetX, offsetY);
+}
+
+function startPainting() {
+  isPainting = true;
+  // 여기서 beginPath를 해준 이유는,
+  // 매 mouseDown마다 새로운 색의 선을 그어주고 싶어서.
+  // 아예 함수보다 더 위에 beginPath와 color를 적어주면 색이 변하지 않음..
   ctx.beginPath();
-  ctx.fillRect(offsetX, offsetY, 2, 2);
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  ctx.strokeStyle = color;
+}
+
+function cancelPainting() {
+  isPainting = false;
 }
 
 canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
+// document.addEventListener("mouseup", cancelPainting); 도 작동한다.
 
 ctx.fillStyle = "red";
 ctx.beginPath();
