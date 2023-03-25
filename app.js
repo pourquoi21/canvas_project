@@ -3,6 +3,9 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
+const lineWidth = document.getElementById("line-width");
+ctx.lineWidth = lineWidth.value;
+
 // ctx.rect(50, 50, 100, 100);
 // ctx.rect(150, 150, 100, 100);
 // ctx.stroke();
