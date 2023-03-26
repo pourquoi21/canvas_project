@@ -95,6 +95,25 @@ function onMove(event) {
     // 이것도 chatGPT한테 물어봄: 얘가 자꾸 말을 바꾼다 ㅡㅡ
     // 결론은 performance of the function을 위해서라는 거 같음.
   }
+
+  // 나는 강의랑 조금 다른 방향으로 했었기 때문에
+  // beginPath를 startPatinting에 넣어서 시작해줬었는데,
+  // 강의에서는 lineWidth관련해서 모든 선의 width가 변하는 문제를
+  // 여기 moveTo위에 beginPath를 함으로써 해결하더라.
+  // 어디에 beginPath를 넣는게 더 올바른지는 잘 모르겠다.
+  // 그리고 난 처음에 beginPath를 onMove의 상단에 넣으려고 했었음.
+  // 그러나 그러면 작동하지 않는다.
+  // 먼저 if문을 통해서 지금 그리고 있는가? 를 판단한 후에
+  // path를 begin해야하기 때문이겠지?
+  // 그렇지만 일단 isPainting === "true"이면 거기서 beginPath 해줘도 될것같은데..
+
+  // 의외의 사실: chatGPT는 beginPath를 startPainting 안에 두기를 추천했다!
+  // 왜냐하면 매번 beginPath를 하는것보다 그쪽이 효율적이기 때문이라고 함.
+  // 근데 chatGPT도 실수를 하기 때문에.. 사실 완전히 수용하기는 어려움
+
+  // 난 다만 왜 beginPath를 if안에 넣을 수 없는지가 의문
+  // ctx.beginPath();
+
   // 왜 if문을 먼저 쓰고 moveTo를 썼을까...
   // moveTo를 위에 올려봤는데 선이 안 그어진다.
   // beginPath를 moveTo위에 써도 마찬가지.
@@ -113,13 +132,18 @@ function startPainting() {
   // 여기서 beginPath를 해준 이유는,
   // 매 mouseDown마다 새로운 색의 선을 그어주고 싶어서.
   // 아예 함수보다 더 위에 beginPath와 color를 적어주면 색이 변하지 않음..
-  ctx.beginPath();
+  // ctx.beginPath();
   const color = colors[Math.floor(Math.random() * colors.length)];
   ctx.strokeStyle = color;
 }
 
 function cancelPainting() {
   isPainting = false;
+  ctx.beginPath();
+}
+
+function onLineWidthChange(event) {
+  ctx.lineWidth = event.target.value;
 }
 
 canvas.addEventListener("mousemove", onMove);
@@ -127,6 +151,8 @@ canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
 // document.addEventListener("mouseup", cancelPainting); 도 작동한다.
+
+lineWidth.addEventListener("change", onLineWidthChange);
 
 ctx.fillStyle = "red";
 ctx.beginPath();
