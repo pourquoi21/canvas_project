@@ -139,6 +139,10 @@ function startPainting() {
 
 function cancelPainting() {
   isPainting = false;
+
+  // 강의에서 beginPath를 여기에 둬도 된다고 했다.
+  // 흥미로운지고..
+  // 이전에 beginPath를 안 했는데(위에 있는 것 다 주석처리해봤다) 어떻게 선이 그려지는거지?
   ctx.beginPath();
 }
 
