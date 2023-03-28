@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
+const color = document.getElementById("color");
 const lineWidth = document.getElementById("line-width");
 ctx.lineWidth = lineWidth.value;
 
@@ -150,6 +151,10 @@ function onLineWidthChange(event) {
   ctx.lineWidth = event.target.value;
 }
 
+function onColorChange(event) {
+  console.log("Hello");
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
@@ -157,6 +162,7 @@ canvas.addEventListener("mouseleave", cancelPainting);
 // document.addEventListener("mouseup", cancelPainting); 도 작동한다.
 
 lineWidth.addEventListener("change", onLineWidthChange);
+color.addEventListener("change", onColorChange);
 
 ctx.fillStyle = "red";
 ctx.beginPath();
