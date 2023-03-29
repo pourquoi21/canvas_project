@@ -4,6 +4,7 @@ canvas.width = 800;
 canvas.height = 800;
 
 const color = document.getElementById("color");
+// console.log(color);
 const lineWidth = document.getElementById("line-width");
 ctx.lineWidth = lineWidth.value;
 
@@ -134,8 +135,12 @@ function startPainting() {
   // 매 mouseDown마다 새로운 색의 선을 그어주고 싶어서.
   // 아예 함수보다 더 위에 beginPath와 color를 적어주면 색이 변하지 않음..
   // ctx.beginPath();
-  const color = colors[Math.floor(Math.random() * colors.length)];
-  ctx.strokeStyle = color;
+
+  // 일부러 아래의 랜덤컬러함수를 주석처리하지 않았더니,
+  // color input에서 색을 선택함과 동시에 캔버스에 mouseDown을 하면
+  // onColorChange함수의 결과로 딱 한번만 내가 선택한 색을 쓸 수 있다.
+  // const color = colors[Math.floor(Math.random() * colors.length)];
+  // ctx.strokeStyle = color;
 }
 
 function cancelPainting() {
@@ -152,7 +157,9 @@ function onLineWidthChange(event) {
 }
 
 function onColorChange(event) {
-  console.log("Hello");
+  console.log(event.target.value);
+  ctx.strokeStyle = event.target.value;
+  ctx.fillStyle = event.target.value;
 }
 
 canvas.addEventListener("mousemove", onMove);
