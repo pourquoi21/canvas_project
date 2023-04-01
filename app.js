@@ -3,6 +3,11 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
+const colorOptions = Array.from(
+  document.getElementsByClassName("color-option")
+);
+// console.log(colorOptions);
+
 const color = document.getElementById("color");
 // console.log(color);
 const lineWidth = document.getElementById("line-width");
@@ -162,6 +167,10 @@ function onColorChange(event) {
   ctx.fillStyle = event.target.value;
 }
 
+function onColorClick(event) {
+  console.log(event.target.style.backgroundColor);
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
@@ -170,6 +179,8 @@ canvas.addEventListener("mouseleave", cancelPainting);
 
 lineWidth.addEventListener("change", onLineWidthChange);
 color.addEventListener("change", onColorChange);
+
+colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
 
 ctx.fillStyle = "red";
 ctx.beginPath();
