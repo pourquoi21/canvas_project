@@ -169,6 +169,7 @@ function onColorChange(event) {
 
 function onColorClick(event) {
   console.log(event.target.style.backgroundColor);
+  ctx.strokeStyle = event.target.style.backgroundColor;
 }
 
 canvas.addEventListener("mousemove", onMove);
