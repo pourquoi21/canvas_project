@@ -8,77 +8,167 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <canvas></canvas>
-    <div class="tools">
-      <input
-        id="line-width"
-        type="range"
-        min="1"
-        max="10"
-        value="5"
-        step="0.5"
-      />
-      <input id="color" type="color" />
-      <div
-        class="color-option"
-        style="background-color: #1abc9c"
-        data-color="#1abc9c"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #3498db"
-        data-color="#3498db"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #34495e"
-        data-color="#34495e"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #27ae60"
-        data-color="#27ae60"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #8e44ad"
-        data-color="#8e44ad"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #f1c40f"
-        data-color="#f1c40f"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #e74c3c"
-        data-color="#e74c3c"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #95a5a6"
-        data-color="#95a5a6"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #d35400"
-        data-color="#d35400"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #bdc3c7"
-        data-color="#bdc3c7"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #2ecc71"
-        data-color="#2ecc71"
-      ></div>
-      <div
-        class="color-option"
-        style="background-color: #e67e22"
-        data-color="#e67e22"
-      ></div>
+    <div id="window">
+      <canvas></canvas>
+      <div class="tools">
+        <input
+          id="line-width"
+          type="range"
+          min="1"
+          max="10"
+          value="5"
+          step="0.5"
+        />
+        <div class="tools_color">
+          <input id="color" type="color" />
+          <div class="colors">
+            <div class="color1">
+              <div
+                class="color-option"
+                style="background-color: #000000"
+                data-color="#000000"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #808080"
+                data-color="#808080"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #800000"
+                data-color="#800000"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #8f8f21"
+                data-color="#8f8f21"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #008000"
+                data-color="#008000"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #008080"
+                data-color="#008080"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #000080"
+                data-color="#000080"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #800080"
+                data-color="#800080"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #808040"
+                data-color="#808040"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #004040"
+                data-color="#004040"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #218ffd"
+                data-color="#218ffd"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #004080"
+                data-color="#004080"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #8000ff"
+                data-color="#8000ff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #804000"
+                data-color="#804000"
+              ></div>
+            </div>
+            <div class="color2">
+              <div
+                class="color-option"
+                style="background-color: #ffffff"
+                data-color="#ffffff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #c0c0c0"
+                data-color="#c0c0c0"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #ff0000"
+                data-color="#ff0000"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #ffff00"
+                data-color="#ffff00"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #00ff00"
+                data-color="#00ff00"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #00ffff"
+                data-color="#00ffff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #0000ff"
+                data-color="#0000ff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #ff00ff"
+                data-color="#ff00ff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #ffff80"
+                data-color="#ffff80"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #00ff80"
+                data-color="#00ff80"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #80ffff"
+                data-color="#80ffff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #8080ff"
+                data-color="#8080ff"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #ff0080"
+                data-color="#ff0080"
+              ></div>
+              <div
+                class="color-option"
+                style="background-color: #ff8040"
+                data-color="#ff8040"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="app.js"></script>
