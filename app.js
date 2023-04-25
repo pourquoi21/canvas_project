@@ -3,6 +3,8 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
+// colorOption을 돌면서 forEach로 eventListener를
+// 추가할 수 있게 배열형태로 만들어준다.
 const colorOptions = Array.from(
   document.getElementsByClassName("color-option")
 );
@@ -162,14 +164,26 @@ function onLineWidthChange(event) {
 }
 
 function onColorChange(event) {
-  console.log(event.target.value);
+  // console.log(event.target.value);
   ctx.strokeStyle = event.target.value;
   ctx.fillStyle = event.target.value;
 }
 
 function onColorClick(event) {
-  console.log(event.target.style.backgroundColor);
-  ctx.strokeStyle = event.target.style.backgroundColor;
+  // 여기서 console.dir(event.target)울 하면, 'dataset'에서
+  // html에서 data-color속성으로 넣어준 컬러코드를 확인할 수 있음.
+  // 난 강의에서 console.dir부분을 보기 전에 따로 실습을 했기 때문에
+  // 그냥 backgroundcolor로 접근했다..
+  // console.log(event.target.style.backgroundColor);
+
+  // 아 그런데 backgroundcolor로 접근하면 rgb컬러로 나오게 되고
+  // 그럼 color input창의 색을 바꿔서 사용자에게
+  // 현재 선택된 색을 알려주는 활동을 할 수가 없게 된다..
+  // 따라서 그냥 console.dir을 쓰기로..
+  const colorValue = event.target.dataset.color;
+  ctx.strokeStyle = colorValue;
+  color.value = colorValue;
+  // console.log(color.value);
 }
 
 canvas.addEventListener("mousemove", onMove);
