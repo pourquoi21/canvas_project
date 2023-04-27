@@ -14,28 +14,58 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center; */
-  padding: 15px;
+  padding: 3px 2px;
   box-sizing: border-box;
   background-color: #bdbdbd;
+  border-top: 1.5px solid #fff;
+  border-left: 1.5px solid #fff;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px rgba(255, 255, 255, 0.3);
+}
+
+#window_line {
+  width: 100%;
+  height: 20px;
+  padding: 1px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 12px;
+  background: linear-gradient(90deg, #000281, #1083cf);
+}
+
+.title_img {
+  height: 80%;
+}
+
+#window_cont {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 canvas {
-  width: 800px;
+  /* window padding 2px, cont padding 5px, border 2px(one side)
+  따라서 canvas width = window width - 16 으로 */
+  width: 814px;
   height: 800px;
-
   border-bottom: 2px solid #dcdcdc;
   border-right: 2px solid #dcdcdc;
-  border-top: 2px solid #7f7f7f;
-  border-left: 2px solid #7f7f7f;
+  border-top: 1.5px solid #7f7f7f;
+  border-left: 1.5px solid #7f7f7f;
   box-shadow: inset 2px 2px rgba(0, 0, 0, 0.5);
   background-color: #fff;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .tools {
-  width: 455px;
-  height: 50px;
-  padding: 0 5px 0px 10px;
+  width: 388px;
+  height: 42px;
+  padding: 5px;
+  margin-right: auto;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   border-bottom: 1.5px solid #7f7f7f;
@@ -56,21 +86,25 @@ canvas {
 }
 
 #color {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 8px;
 }
 
-.color1,
-.color2 {
+.color1 {
   display: flex;
   flex-direction: row;
   margin-bottom: 2px;
 }
 
+.color2 {
+  display: flex;
+  flex-direction: row;
+}
+
 .color-option {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
   margin-right: 2px;
   border-right: 1.8px solid #fff;

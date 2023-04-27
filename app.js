@@ -42,39 +42,39 @@ ctx.lineWidth = lineWidth.value;
 // ctx.fillStyle = "blue";
 // ctx.fillRect(550, 550, 100, 100);
 
-// make a house
-ctx.fillStyle = "black";
-ctx.fillRect(650, 650, 5, 100);
-ctx.fillRect(750, 650, 5, 100);
-ctx.lineWidth = 3;
-ctx.fillRect(687, 700, 30, 50);
-ctx.fillRect(650, 650, 100, 5);
+// // make a house
+// ctx.fillStyle = "black";
+// ctx.fillRect(650, 650, 5, 100);
+// ctx.fillRect(750, 650, 5, 100);
+// ctx.lineWidth = 3;
+// ctx.fillRect(687, 700, 30, 50);
+// ctx.fillRect(650, 650, 100, 5);
 
-ctx.moveTo(650, 650);
-ctx.lineTo(702, 600);
-ctx.lineTo(754, 650);
-ctx.fill();
+// ctx.moveTo(650, 650);
+// ctx.lineTo(702, 600);
+// ctx.lineTo(754, 650);
+// ctx.fill();
 
-// draw a person
-ctx.beginPath();
-ctx.fillRect(240, 200, 15, 100);
-ctx.fillRect(325, 200, 15, 100);
-ctx.fillRect(260, 200, 60, 150);
+// // draw a person
+// ctx.beginPath();
+// ctx.fillRect(240, 200, 15, 100);
+// ctx.fillRect(325, 200, 15, 100);
+// ctx.fillRect(260, 200, 60, 150);
 
-ctx.arc(290, 170, 20, 0, 2 * Math.PI);
-ctx.fill();
+// ctx.arc(290, 170, 20, 0, 2 * Math.PI);
+// ctx.fill();
 
-ctx.beginPath();
-ctx.arc(280, 168, 3, 1 * Math.PI, 2 * Math.PI);
-ctx.arc(300, 168, 3, 1 * Math.PI, 2 * Math.PI);
-ctx.fillStyle = "white";
-ctx.fill();
+// ctx.beginPath();
+// ctx.arc(280, 168, 3, 1 * Math.PI, 2 * Math.PI);
+// ctx.arc(300, 168, 3, 1 * Math.PI, 2 * Math.PI);
+// ctx.fillStyle = "white";
+// ctx.fill();
 
-ctx.beginPath();
-ctx.arc(290, 172, 9, 0, 1 * Math.PI);
-ctx.strokeStyle = "white";
-ctx.lineWidth = 2;
-ctx.stroke();
+// ctx.beginPath();
+// ctx.arc(290, 172, 9, 0, 1 * Math.PI);
+// ctx.strokeStyle = "white";
+// ctx.lineWidth = 2;
+// ctx.stroke();
 
 const colors = [
   "#ff3838",
@@ -197,6 +197,6 @@ color.addEventListener("change", onColorChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
 
-ctx.fillStyle = "red";
-ctx.beginPath();
-ctx.fillRect(500, 500, 10, 10);
+// ctx.fillStyle = "red";
+// ctx.beginPath();
+// ctx.fillRect(500, 500, 10, 10);
