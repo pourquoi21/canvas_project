@@ -20,6 +20,7 @@ body {
   border-top: 1.5px solid #fff;
   border-left: 1.5px solid #fff;
   box-shadow: 2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px rgba(255, 255, 255, 0.3);
+  user-select: none;
 }
 
 #window_line {
@@ -39,18 +40,43 @@ body {
 #window_cont {
   width: 100%;
   height: 100%;
-  padding: 5px;
+  padding: 5px 2px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-canvas {
+.tools1 {
+  width: 100%;
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.tools1 .tools1_tool {
+  width: 50px;
+  /* flex-grow: 1; */
+}
+
+.tools1_tool #mode_btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 2px solid #7f7f7f;
+  border-right: 2px solid #7f7f7f;
+  border-top: 1.8px solid #fff;
+  border-left: 1.8px solid #fff;
+}
+
+.tools1 canvas {
   /* window padding 2px, cont padding 5px, border 2px(one side)
   따라서 canvas width = window width - 16 으로 */
-  width: 814px;
+  /* width: 700px; */
   height: 800px;
+  flex-grow: 11;
   border-bottom: 2px solid #dcdcdc;
   border-right: 2px solid #dcdcdc;
   border-top: 1.5px solid #7f7f7f;
@@ -60,7 +86,7 @@ canvas {
   margin-bottom: 5px;
 }
 
-.tools {
+.tools2 {
   width: 388px;
   height: 42px;
   padding: 5px;
@@ -70,8 +96,8 @@ canvas {
   flex-direction: row;
   border-bottom: 1.5px solid #7f7f7f;
   border-right: 1.5px solid #7f7f7f;
-  border-top: 1.5px solid #fff;
-  border-left: 1.5px solid #fff;
+  border-top: 1.8px solid #fff;
+  border-left: 1.8px solid #fff;
 }
 
 #line-width {
@@ -79,7 +105,7 @@ canvas {
   margin-right: 8px;
 }
 
-.tools_color {
+.tools2_color {
   display: flex;
   flex-direction: row;
   align-items: center;

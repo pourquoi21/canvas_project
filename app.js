@@ -1,13 +1,18 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = 800;
+// canvas.width = 800;
 canvas.height = 800;
+canvas.width = 760;
+
+const modeBtn = document.getElementById("mode_btn");
+const modeImg = document.getElementById("mode_img");
 
 // colorOption을 돌면서 forEach로 eventListener를
 // 추가할 수 있게 배열형태로 만들어준다.
 const colorOptions = Array.from(
   document.getElementsByClassName("color-option")
 );
+
 // console.log(colorOptions);
 
 const color = document.getElementById("color");
@@ -87,6 +92,7 @@ const colors = [
 ];
 
 let isPainting = false;
+let isFilling = false;
 ctx.fillStyle = "black";
 ctx.strokeStyle = "black";
 
@@ -179,23 +185,45 @@ function onColorClick(event) {
   // 아 그런데 backgroundcolor로 접근하면 rgb컬러로 나오게 되고
   // 그럼 color input창의 색을 바꿔서 사용자에게
   // 현재 선택된 색을 알려주는 활동을 할 수가 없게 된다..
-  // 따라서 그냥 console.dir을 쓰기로..
+  // 따라서 그냥 dataset을 쓰기로..
   const colorValue = event.target.dataset.color;
   ctx.strokeStyle = colorValue;
   color.value = colorValue;
   // console.log(color.value);
 }
 
+function onModeClick() {
+  if (isFilling) {
+    isFilling = false;
+    modeImg.src = "draw.svg";
+  } else {
+    isFilling = true;
+    modeImg.src = "fill.svg";
+  }
+}
+
+function onCanvasClick() {
+  if (isFilling) {
+    ctx.fillStyle = color.value;
+    // console.log(color.value);
+    ctx.beginPath();
+    ctx.fillRect(0, 0, 760, 800);
+  }
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
+canvas.addEventListener("click", onCanvasClick);
 // document.addEventListener("mouseup", cancelPainting); 도 작동한다.
 
 lineWidth.addEventListener("change", onLineWidthChange);
 color.addEventListener("change", onColorChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
+
+modeBtn.addEventListener("click", onModeClick);
 
 // ctx.fillStyle = "red";
 // ctx.beginPath();

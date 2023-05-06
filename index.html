@@ -14,8 +14,16 @@
         제목없음 - 그림판
       </div>
       <div id="window_cont">
-        <canvas></canvas>
-        <div class="tools">
+        <div class="tools1">
+          <div class="tools1_tool">
+            <div id="mode_btn">
+              <img id="mode_img" src="draw.svg" />
+            </div>
+          </div>
+          <canvas></canvas>
+        </div>
+
+        <div class="tools2">
           <input
             id="line-width"
             type="range"
@@ -24,7 +32,7 @@
             value="2"
             step="0.5"
           />
-          <div class="tools_color">
+          <div class="tools2_color">
             <input id="color" type="color" />
             <div class="colors">
               <div class="color1">
