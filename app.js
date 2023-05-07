@@ -7,6 +7,10 @@ canvas.width = 760;
 const modeBtn = document.getElementById("mode_btn");
 const modeImg = document.getElementById("mode_img");
 
+const eraseBtn = document.getElementById("erase_btn");
+
+const broomBtn = document.getElementById("broom_btn");
+
 // colorOption을 돌면서 forEach로 eventListener를
 // 추가할 수 있게 배열형태로 만들어준다.
 const colorOptions = Array.from(
@@ -95,6 +99,7 @@ let isPainting = false;
 let isFilling = false;
 ctx.fillStyle = "black";
 ctx.strokeStyle = "black";
+let isErasing = false;
 
 function onMove(event) {
   const { offsetX, offsetY } = event;
@@ -208,7 +213,30 @@ function onCanvasClick() {
     // console.log(color.value);
     ctx.beginPath();
     ctx.fillRect(0, 0, 760, 800);
+  } else if (isErasing) {
+    ctx.strokeStyle = "white";
+    ctx.stroke();
   }
+}
+
+function onEraseClick() {
+  if (isErasing) {
+    isErasing = false;
+    eraseBtn.classList.remove("active");
+  } else {
+    isErasing = true;
+    isFilling = false;
+    modeImg.src = "draw.svg";
+    eraseBtn.classList.add("active");
+    ctx.fillStyle = "white";
+    ctx.strokeStyle = "white";
+  }
+}
+
+function onBroomClick() {
+  isErasing = false;
+  eraseBtn.classList.remove("active");
+  ctx.clearRect(0, 0, 760, 800);
 }
 
 canvas.addEventListener("mousemove", onMove);
@@ -224,6 +252,8 @@ color.addEventListener("change", onColorChange);
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
 
 modeBtn.addEventListener("click", onModeClick);
+eraseBtn.addEventListener("click", onEraseClick);
+broomBtn.addEventListener("click", onBroomClick);
 
 // ctx.fillStyle = "red";
 // ctx.beginPath();

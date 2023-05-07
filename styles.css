@@ -95,6 +95,14 @@ body {
   border-left: 1.8px solid #7f7f7f;
 }
 
+.tools1_tool button.active {
+  background: #d3d3d3;
+  border-bottom: 1.5px solid #fff;
+  border-right: 1.5px solid #fff;
+  border-top: 1.8px solid #7f7f7f;
+  border-left: 1.8px solid #7f7f7f;
+}
+
 .tools1 canvas {
   /* window padding 2px, cont padding 5px, border 2px(one side)
   따라서 canvas width = window width - 16 으로 */
