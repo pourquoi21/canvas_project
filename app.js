@@ -231,6 +231,8 @@ function onCanvasClick() {
   } else if (isErasing) {
     ctx.strokeStyle = "white";
     ctx.stroke();
+  } else {
+    ctx.strokeStyle = color.value;
   }
 }
 
@@ -254,6 +256,7 @@ function onBroomClick() {
   isErasing = false;
   eraseBtn.classList.remove("active");
   ctx.clearRect(0, 0, 760, 800);
+  ctx.strokeStyle = color.value;
 }
 
 function onFileChange(event) {
