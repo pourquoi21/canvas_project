@@ -191,6 +191,12 @@ function onColorClick(event) {
   // 그럼 color input창의 색을 바꿔서 사용자에게
   // 현재 선택된 색을 알려주는 활동을 할 수가 없게 된다..
   // 따라서 그냥 dataset을 쓰기로..
+  if (isErasing) {
+    isErasing = false;
+    eraseBtn.classList.remove("active");
+    ctx.fillStyle = color.value;
+    ctx.strokeStyle = color.value;
+  }
   const colorValue = event.target.dataset.color;
   ctx.strokeStyle = colorValue;
   color.value = colorValue;
@@ -200,6 +206,7 @@ function onColorClick(event) {
 function onModeClick() {
   if (isFilling) {
     isFilling = false;
+    ctx.fillStyle = color.value;
     modeImg.src = "draw.svg";
   } else {
     isFilling = true;
@@ -223,6 +230,8 @@ function onEraseClick() {
   if (isErasing) {
     isErasing = false;
     eraseBtn.classList.remove("active");
+    ctx.fillStyle = color.value;
+    ctx.strokeStyle = color.value;
   } else {
     isErasing = true;
     isFilling = false;
