@@ -4,6 +4,9 @@ const ctx = canvas.getContext("2d");
 canvas.height = 800;
 canvas.width = 760;
 
+const canvasHeight = canvas.height;
+const canvasWidth = canvas.width;
+
 const modeBtn = document.getElementById("mode_btn");
 const modeImg = document.getElementById("mode_img");
 
@@ -11,7 +14,7 @@ const eraseBtn = document.getElementById("erase_btn");
 
 const broomBtn = document.getElementById("broom_btn");
 
-const fileBtn = document.getElementById("file_btn");
+const fileInput = document.getElementById("file_btn");
 
 // colorOption을 돌면서 forEach로 eventListener를
 // 추가할 수 있게 배열형태로 만들어준다.
@@ -223,6 +226,8 @@ function onCanvasClick() {
     // console.log(color.value);
     ctx.beginPath();
     ctx.fillRect(0, 0, 760, 800);
+    isErasing = false;
+    eraseBtn.classList.remove("active");
   } else if (isErasing) {
     ctx.strokeStyle = "white";
     ctx.stroke();
@@ -257,7 +262,8 @@ function onFileChange(event) {
   const image = new Image();
   image.src = url;
   image.onload = function () {
-    ctx.drawImage(image, 0, 0, 760, 800);
+    ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
+    fileInput.value = null;
   };
 }
 
@@ -276,7 +282,7 @@ colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
 modeBtn.addEventListener("click", onModeClick);
 eraseBtn.addEventListener("click", onEraseClick);
 broomBtn.addEventListener("click", onBroomClick);
-fileBtn.addEventListener("change", onFileChange);
+fileInput.addEventListener("change", onFileChange);
 
 // ctx.fillStyle = "red";
 // ctx.beginPath();
