@@ -39,6 +39,12 @@ body {
 
 #window_menu {
   padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#window_menu #text {
+  width: 250px;
 }
 
 #window_cont {

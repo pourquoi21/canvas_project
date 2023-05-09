@@ -4,17 +4,20 @@ const ctx = canvas.getContext("2d");
 canvas.height = 800;
 canvas.width = 760;
 
+ctx.fillStyle = "black";
+ctx.strokeStyle = "black";
+ctx.lineCap = "round";
+
 const canvasHeight = canvas.height;
 const canvasWidth = canvas.width;
 
 const modeBtn = document.getElementById("mode_btn");
 const modeImg = document.getElementById("mode_img");
-
 const eraseBtn = document.getElementById("erase_btn");
-
 const broomBtn = document.getElementById("broom_btn");
-
 const fileInput = document.getElementById("file_btn");
+const textInput = document.getElementById("text");
+const saveBtn = document.getElementById("save_btn");
 
 // colorOption을 돌면서 forEach로 eventListener를
 // 추가할 수 있게 배열형태로 만들어준다.
@@ -103,8 +106,7 @@ ctx.lineWidth = lineWidth.value;
 
 let isPainting = false;
 let isFilling = false;
-ctx.fillStyle = "black";
-ctx.strokeStyle = "black";
+
 let isErasing = false;
 
 function onMove(event) {
@@ -210,6 +212,8 @@ function onColorClick(event) {
 }
 
 function onModeClick() {
+  isErasing = false;
+  eraseBtn.classList.remove("active");
   if (isFilling) {
     isFilling = false;
     ctx.fillStyle = color.value;
@@ -270,11 +274,30 @@ function onFileChange(event) {
   };
 }
 
+function onDoubleClick(event) {
+  // ctx.save()와 ctx.restore()를 통해서 변경전의 상태를 '저장'할 수 있다.
+  const text = textInput.value;
+  if (text !== "") {
+    ctx.font = "65px sanserif";
+    ctx.fillText(text, event.offsetX, event.offsetY);
+  }
+  // ctx.fillText
+}
+
+function onSaveClick() {
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "drawing.png";
+  a.click();
+}
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
 canvas.addEventListener("click", onCanvasClick);
+canvas.addEventListener("dblclick", onDoubleClick);
 // document.addEventListener("mouseup", cancelPainting); 도 작동한다.
 
 lineWidth.addEventListener("change", onLineWidthChange);
@@ -286,6 +309,7 @@ modeBtn.addEventListener("click", onModeClick);
 eraseBtn.addEventListener("click", onEraseClick);
 broomBtn.addEventListener("click", onBroomClick);
 fileInput.addEventListener("change", onFileChange);
+saveBtn.addEventListener("click", onSaveClick);
 
 // ctx.fillStyle = "red";
 // ctx.beginPath();
